@@ -1,0 +1,19 @@
+services:
+  # A static site
+  - type: web
+    name: shuang-cinemas-web
+    runtime: static
+    buildCommand: npm install -g pnpm@8.5.0 && pnpm build:libs && pnpm build:apps
+    staticPublishPath: ./dist/
+    pullRequestPreviewsEnabled: true # optional
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: sameorigin
+    routes:
+      - type: rewrite
+        source: /front-stage/*
+        destination: /front-stage/index.html
+      - type: rewrite
+        source: /back-stage/*
+        destination: /back-stage/index.html
