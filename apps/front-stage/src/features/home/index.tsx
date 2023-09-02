@@ -1,5 +1,9 @@
-export default function index() {
+const HomePage = () => {
   return (
-    <div>Home</div>
+    <div>
+      HomePage
+    </div>
   )
 }
+
+export default HomePage;
