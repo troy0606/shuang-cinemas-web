@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
     "dev:front": "pnpm --filter=./apps/front-stage run dev",
     "dev:back": "pnpm --filter=./apps/back-stage run dev",
     "build:apps": "pnpm --filter=./apps/* run build",
@@ -22,6 +23,9 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.2",
     "typescript": "^5.0.2"
   }
 }

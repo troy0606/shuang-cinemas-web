@@ -6,10 +6,14 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({command})=> {
   const commonConfig = {
     plugins: [react()],
+    base: "/front-stage/",
+    build: {
+      outDir: "../../dist/front-stage"
+    } 
   };
   if (command === 'serve') {
      // dev 独有配置
-    return {...commonConfig, base: "/front-stage/",};
+    return {...commonConfig};
   } else {
     // command === 'build'
     // build 独有配置
