@@ -1,11 +1,22 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  base: "/front-stage/",
-  build: {
-    outDir: "../../dist/front-stage"
+/** @type {import('vite').UserConfig} */
+export default defineConfig(({command})=> {
+  const commonConfig = {
+    plugins: [react()],
+    base: "/front-stage/",
+    build: {
+      outDir: "../../dist/front-stage"
+    } 
+  };
+  if (command === 'serve') {
+     // dev 独有配置
+    return {...commonConfig};
+  } else {
+    // command === 'build'
+    // build 独有配置
+    return {...commonConfig};
   }
 })
