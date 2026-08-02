@@ -29,5 +29,9 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
     "typescript": "^5.0.2"
+  },
+  "volta": {
+    "node": "24.14.0",
+    "pnpm": "11.18.0"
   }
 }

@@ -13,6 +13,16 @@
 * Node.js: 24.14.0
 * pnpm: 11.18.0
 
+版本已透過 `package.json` 的 `volta` 欄位鎖定，使用 [Volta](https://volta.sh) 時會自動切換至對應版本。
+
+注意：Volta 對 pnpm 的支援仍在 feature flag 後，需在 shell 設定檔加上以下環境變數，pnpm 的版本鎖定才會生效（未設定時會沿用全域版本，並被 `engine-strict` 擋下）：
+
+```bash
+export VOLTA_FEATURE_PNPM=1
+```
+
+未使用 Volta 者，Node 版本可透過 `.nvmrc` 搭配 nvm/fnm 切換，pnpm 則可用 `corepack enable` 依 `packageManager` 欄位自動切版。
+
 ##### 執行步驟
 
 1. 安裝 node.js
