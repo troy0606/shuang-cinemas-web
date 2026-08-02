@@ -45,4 +45,10 @@ export VOLTA_FEATURE_PNPM=1
 * 後台專案本機啟動: pnpm run dev:back
 * 所有應用程式專案打包: pnpm run build:apps
 * 所有跨專案函式庫專打包: pnpm run build:libs
+* 僅打包前台(含其依賴的函式庫): pnpm run build:front
+* 僅打包後台(含其依賴的函式庫): pnpm run build:back
+
+`build:front` 與 `build:back` 對應 Render 上兩個獨立 service 的建置指令，
+其 filter 使用 `{./apps/xxx}...` 形式連帶建置 workspace 依賴。大括號不可省略 ——
+路徑形式若直接接 `...`，該符號會被當成路徑的一部分，導致函式庫靜默不被建置。
 

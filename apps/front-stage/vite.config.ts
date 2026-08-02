@@ -7,7 +7,7 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig(({ command }) => {
   const commonConfig = {
     plugins: [react(), svgr()],
-    base: '/front-stage/',
+    base: '/',
     build: {
       outDir: '../../dist/front-stage',
     },

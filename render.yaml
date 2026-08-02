@@ -1,10 +1,20 @@
 services:
-  # A static site
+  # ── 前台 ─────────────────────────────────────────────
   - type: web
     name: shuang-cinemas-web
     runtime: static
-    buildCommand: npm install -g pnpm@11.18.0 && pnpm install --frozen-lockfile && pnpm run build
-    staticPublishPath: ./dist/
+    buildCommand: >-
+      npm install -g pnpm@11.18.0 &&
+      pnpm install --frozen-lockfile &&
+      pnpm build:front
+    staticPublishPath: ./dist/front-stage
+    buildFilter:
+      paths:
+        - apps/front-stage/**
+        - libs/**
+        - package.json
+        - pnpm-lock.yaml
+        - pnpm-workspace.yaml
     envVars:
       - key: NODE_VERSION
         value: 24.14.0
@@ -15,8 +25,34 @@ services:
         value: sameorigin
     routes:
       - type: rewrite
-        source: /front-stage/*
-        destination: /front-stage/index.html
+        source: /*
+        destination: /index.html
+
+  # ── 後台 ─────────────────────────────────────────────
+  - type: web
+    name: shuang-cinemas-admin
+    runtime: static
+    buildCommand: >-
+      npm install -g pnpm@11.18.0 &&
+      pnpm install --frozen-lockfile &&
+      pnpm build:back
+    staticPublishPath: ./dist/back-stage
+    buildFilter:
+      paths:
+        - apps/back-stage/**
+        - libs/**
+        - package.json
+        - pnpm-lock.yaml
+        - pnpm-workspace.yaml
+    envVars:
+      - key: NODE_VERSION
+        value: 24.14.0
+    pullRequestPreviewsEnabled: true # optional
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: sameorigin
+    routes:
       - type: rewrite
-        source: /back-stage/*
-        destination: /back-stage/index.html
+        source: /*
+        destination: /index.html

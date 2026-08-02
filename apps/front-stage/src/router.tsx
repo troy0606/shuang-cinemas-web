@@ -4,23 +4,18 @@ import App from './App';
 import Home from './features/home';
 import Error from './features/error';
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <App />,
-      errorElement: <Error />,
-      children: [
-        {
-          path: '/',
-          element: <Home />,
-        },
-      ],
-    },
-  ],
+const router = createBrowserRouter([
   {
-    basename: '/front-stage',
+    path: '/',
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+    ],
   },
-);
+]);
 
 export default router;
