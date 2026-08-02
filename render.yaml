@@ -3,7 +3,7 @@ services:
   - type: web
     name: shuang-cinemas-web
     runtime: static
-    buildCommand: npm install -g pnpm@8.5.0 && pnpm install --frozen-lockfile && pnpm run build
+    buildCommand: npm install -g pnpm@11.18.0 && pnpm install --frozen-lockfile && pnpm run build
     staticPublishPath: ./dist/
     envVars:
       - key: NODE_VERSION

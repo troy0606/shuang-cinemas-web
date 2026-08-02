@@ -5,3 +5,7 @@ packages:
   - 'libs/**'
   # exclude packages that are inside test directories
   - '!**/test/**'
+# pnpm 10 起預設封鎖依賴的 lifecycle script，需明確授權
+# esbuild 為 vite 的編譯核心，其 postinstall 負責安裝平台對應的二進位檔
+allowBuilds:
+  esbuild: true
