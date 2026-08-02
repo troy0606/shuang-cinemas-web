@@ -13,7 +13,7 @@ type Props = {
   disabled: boolean;
 };
 
-const Button = (props: Props): ReactNode => {
+const Button = (props: Props) => {
   const { type, onClick, children, theme, size, className, disabled } = props;
 
   const classProps = clsx(theme, size, className);
