@@ -1,5 +1,3 @@
 import sum from './calculate/sum';
 
-export {
-  sum
-}
+export { sum };

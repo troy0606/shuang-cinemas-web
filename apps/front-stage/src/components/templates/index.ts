@@ -1,2 +1,2 @@
-import Cinama from "./Cinama";
+import Cinama from './Cinama';
 export { Cinama };
