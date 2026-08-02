@@ -1,5 +1,3 @@
 export default function index() {
-  return (
-    <div>404</div>
-  )
+  return <div>404</div>;
 }

@@ -1,3 +1,3 @@
-import CinamaPage from "./CinamaPage";
+import CinamaPage from './CinamaPage';
 
 export { CinamaPage };

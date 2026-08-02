@@ -1,25 +1,26 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
 
-import App from "./App";
-import Home from "./features/home"
-import Error from "./features/error"
+import App from './App';
+import Home from './features/home';
+import Error from './features/error';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App/>,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      }
-    ]
+    basename: '/front-stage',
   },
-], {
-  basename: '/front-stage'
-});
+);
 
 export default router;
