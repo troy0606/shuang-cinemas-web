@@ -10,9 +10,9 @@ updates:
       timezone: "Asia/Taipei"
     cooldown:
       default-days: 5
-      semver-major-days: 30
-      semver-minor-days: 7
-      semver-patch-days: 3
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     groups:
       sonar:
         patterns: ["SonarSource/*"]
