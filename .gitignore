@@ -9,8 +9,9 @@
 /coverage
 
 # production
-/build
-/dist
+# 不加前綴斜線，一併涵蓋 libs/*/dist 等巢狀建置產物
+build/
+dist/
 
 # misc
 .DS_Store

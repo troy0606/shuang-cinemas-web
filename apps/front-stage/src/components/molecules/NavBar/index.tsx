@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { UnorderedList, ListItem } from '../../atoms';
 import { Link } from 'react-router-dom';
 import { TLinkTexts } from '../../../type/TLinkText';
@@ -9,7 +8,7 @@ type Props = {
   datas: TLinkTexts;
 };
 
-const NavBar = ({ className, datas }: Props): ReactNode => {
+const NavBar = ({ className, datas }: Props) => {
   const originClass = 'w-auto flex flex-col justify-center';
   const classProps = clsx(originClass, className);
 

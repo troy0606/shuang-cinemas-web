@@ -26,7 +26,7 @@ type Props<T> = {
  * ex: children(image), children(svg)
  */
 
-const Logo = <T,>(props: Props<T>): ReactNode => {
+const Logo = <T,>(props: Props<T>) => {
   const { link, children, className, linkClassName } = props;
 
   const originClass = '';

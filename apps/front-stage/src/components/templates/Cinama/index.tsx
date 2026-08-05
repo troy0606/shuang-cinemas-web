@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import "./style.scss";
+import { ReactNode } from 'react';
+import './style.scss';
 
 type Props = {
   header: ReactNode;

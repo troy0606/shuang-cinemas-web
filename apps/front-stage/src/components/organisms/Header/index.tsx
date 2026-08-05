@@ -4,7 +4,6 @@ import { NavBar } from '../../molecules';
 
 import { ImageType } from '../../atoms/Logo/type';
 import { LogoSVG } from '../../icons';
-import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { TLinkTexts } from '../../../type/TLinkText';
 
@@ -26,7 +25,7 @@ type Props = {
  * 3. tailwindcss 過長的 utulity class 要放在元件的變數管理，或是直接寫在html tag上，或是其他
  */
 
-const Header = ({ className }: Props): ReactNode => {
+const Header = ({ className }: Props) => {
   const originClass = 'items-center';
   const classProps = clsx(originClass, className);
 

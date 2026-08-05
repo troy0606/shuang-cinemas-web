@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { ListItem, Logo, UnorderedList } from '../../atoms';
 import { ImageType } from '../../atoms/Logo/type';
 import { FacebookSVG, InstagramSVG, LogoSVG } from '../../icons';
@@ -25,7 +24,7 @@ type Props = {
  * 4. tailwindcss 過長的 utulity class 要放在元件的變數管理，或是直接寫在html tag上，或是其他
  */
 
-const Footer = ({ className }: Props): ReactNode => {
+const Footer = ({ className }: Props) => {
   const footerOriginClass = 'container pt-10 pb-8 mx-auto flex flex-col items-start gap-6 self-stretch';
   const footerClass = clsx(footerOriginClass, className);
   const sectionTopClass = 'flex items-center self-stretch justify-between';
