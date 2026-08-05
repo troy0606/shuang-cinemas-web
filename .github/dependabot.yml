@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Taipei"
+    cooldown:
+      default-days: 5
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      sonar:
+        patterns: ["SonarSource/*"]
+      official:
+        patterns: ["actions/*"]
+    commit-message:
+      prefix: "chore(ci)"
+    labels: ["dependencies"]
