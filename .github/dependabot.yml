@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Taipei"
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    groups:
+      sonar:
+        patterns: ["SonarSource/*"]
+      official:
+        patterns: ["actions/*"]
+    commit-message:
+      prefix: "chore(ci)"
+    labels: ["dependencies"]
