@@ -1,9 +1,10 @@
 <script setup>
-import { sum } from '@libs/utils'
+import { sum, multiplySum } from '@libs/utils'
 import HelloWorld from './components/HelloWorld.vue'
 
 // 驗證跨專案函式庫 @libs/utils 於後台可正常運作
 const sumResult = sum(1, 2, 3)
+const multiplySumResult = multiplySum(4, 5, 6)
 </script>
 
 <template>
@@ -17,6 +18,7 @@ const sumResult = sum(1, 2, 3)
   </div>
   <HelloWorld msg="Vite + Vue" />
   <p class="lib-check">@libs/utils sum(1, 2, 3) = {{ sumResult }}</p>
+  <p class="lib-check">@libs/utils multiplySum(4, 5, 6) = {{ multiplySumResult }}</p>
 </template>
 
 <style scoped>

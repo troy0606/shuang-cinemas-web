@@ -43,10 +43,19 @@ export VOLTA_FEATURE_PNPM=1
 * 安裝所有 workspace dependency: pnpm install 
 * 前台專案本機啟動: pnpm run dev:front 
 * 後台專案本機啟動: pnpm run dev:back
+* 全部打包(函式庫先於應用程式): pnpm run build
 * 所有應用程式專案打包: pnpm run build:apps
 * 所有跨專案函式庫專打包: pnpm run build:libs
 * 僅打包前台(含其依賴的函式庫): pnpm run build:front
 * 僅打包後台(含其依賴的函式庫): pnpm run build:back
+
+`dev:front` 與 `dev:back` 會先建置一次函式庫，再以 `--parallel` 同時啟動
+`@libs/utils` 的 `tsc --watch` 與 app 的 dev server。修改 `libs/utils/src` 後
+會自動重新編譯至 `dist`，Vite 隨即對 app 觸發 HMR，不需手動重跑 `build:libs`。
+（前置的一次建置是為了避免 dev server 早於首次編譯啟動而找不到產物。）
+
+`build` 為 CI 使用的全量建置，以 `./libs/*` 與 `./apps/*` 兩個 filter 的聯集選取
+所有套件；pnpm 對多套件的 `run` 預設依拓樸順序執行，故函式庫必定先於應用程式建置。
 
 `build:front` 與 `build:back` 對應 Render 上兩個獨立 service 的建置指令，
 其 filter 使用 `{./apps/xxx}...` 形式連帶建置 workspace 依賴。大括號不可省略 ——
