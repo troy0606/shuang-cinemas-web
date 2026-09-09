@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pnpm build:libs && pnpm build:apps",
+    "build": "pnpm --filter=\"./libs/*\" --filter=\"./apps/*\" run build",
     "prepare": "husky install",
     "dev:front": "pnpm build:libs && pnpm --filter=./apps/front-stage run dev",
     "dev:back": "pnpm build:libs && pnpm --filter=./apps/back-stage run dev",
