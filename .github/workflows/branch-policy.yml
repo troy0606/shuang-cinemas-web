@@ -1,0 +1,33 @@
+name: Branch Policy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: ["master"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      # GitHub 的分支保護與 Rulesets 只能限制被寫入的分支，無法限制 PR 的來源
+      # 分支。此檢查補上該缺口，需在 master 的 ruleset 中設為 required status check
+      # 才會實際擋下 merge。
+      - name: 檢查 PR 來源分支
+        env:
+          # 經由 env 帶入，避免分支名稱直接插入 shell 造成 script injection
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          case "$HEAD_REF" in
+            develop | hotfix/* | release/*)
+              echo "來源分支 $HEAD_REF 允許合入 master"
+              ;;
+            *)
+              echo "::error::master 僅接受來自 develop、hotfix/* 或 release/* 的 PR，目前來源為 $HEAD_REF"
+              exit 1
+              ;;
+          esac
